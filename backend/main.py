@@ -1,8 +1,10 @@
 from flask import Flask, request
 import pickle
+from flask_cors import CORS
 # from markupsafe import escape
 
 app=Flask(__name__)
+CORS(app)
 
 with open("crop_rec_model.pkl","rb") as f:
     model=pickle.load(f)
