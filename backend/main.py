@@ -6,11 +6,13 @@ import sqlite3
 # from markupsafe import escape
 
 
+
 app = Flask(__name__)
 CORS(app)
 
 with open("crop_rec_model.pkl", "rb") as f:
     model = pickle.load(f)
+
 
 
 @app.route("/predict", methods=["POST", "GET"])
@@ -27,6 +29,7 @@ def index():
         return {
             "error": "Enter all the inputs properly ",
             "inputs": "N->Nitrogen, P->Phosphorus, K->Potassium ,T->Temperature, H->Humidity, pH, R->Rainfall ",
+            "example": " https://cropsense-lbv0.onrender.com/predict?N=30&P=20&K=10&T=18&H=55&pH=5.5&R=120 ",
         }
 
     data = [N, P, K, temp, Humidity, pH, RainFall]
