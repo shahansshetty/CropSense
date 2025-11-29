@@ -50,26 +50,26 @@ CropSense uses a trained machine learning model to predict the most suitable cro
 
 - First git clone the repository
 
-  git clone https://github.com/shahansshetty/CropSense.git
+      git clone https://github.com/shahansshetty/CropSense.git
 
 ### Backend setup
 
 1. Cd to backend folder
 
-    cd backend
+        cd backend
 
 2. Install all requirements.txt  
 
-    pip install -r requirements.txt
+        pip install -r requirements.txt
 
 3. To run you flask api in ur localhost run
 
-    python main.py
+        python main.py
 
 ### Frontend setup :
 
 1. Cd to frontend folder from root folder
-    cd frontend
+        cd frontend
 
 2. To run the frontend in localhost , install live server extension and then run it.
 
