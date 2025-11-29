@@ -54,12 +54,15 @@ CropSense uses a trained machine learning model to predict the most suitable cro
 ### Backend setup
 
 1. Cd to backend folder
+
     cd backend
 
 2. Install all requirements.txt  
+
     pip install -r requirements.txt
 
 3. To run you flask api in ur localhost run
+
     python main.py
 
 ### Frontend setup :
