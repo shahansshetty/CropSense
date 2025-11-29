@@ -49,7 +49,8 @@ CropSense uses a trained machine learning model to predict the most suitable cro
 ## Want to setup yourself ?
 
 - First git clone the repository
-    git clone https://github.com/shahansshetty/CropSense.git
+
+  git clone https://github.com/shahansshetty/CropSense.git
 
 ### Backend setup
 
