@@ -32,7 +32,7 @@
           <a href="#" class="block py-2 px-3 text-black bg-brand rounded-sm md:bg-transparent md:text-fg-brand md:p-0" aria-current="page">Home</a>
         </li>
         <li>
-          <a href="#" class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent">Find All Soil info</a>
+          <a href="https://overgrow.com/t/soil-testing-a-tutorial-for-ph-n-p-k-solves-most-problems/4719" class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent">Find All Soil info</a>
         </li>
         <!-- <li> -->
           <!-- <a href="#" class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent">Services</a> -->
@@ -64,9 +64,10 @@
           id="N"
           type="number"
           name="N"
-          placeholder="e.g., 20"
+          placeholder="e.g., 100 ."
           class="w-full px-3 py-2 border rounded-lg shadow-sm"
           required
+          max="200"
         />
       </div>
 
@@ -79,22 +80,24 @@
           type="number"
           name="P"
           id="P"
-          placeholder="e.g., 20"
+          placeholder="e.g., 100"
           class="w-full px-3 py-2 border rounded-lg shadow-sm"
           required
+          max="200"
         />
       </div>
 
       <!-- Potassium -->
       <div>
-        <label class="block mb-1 text-sm font-semibold"
-          >Potassium (K ppm in soil)</label
+        <label class="block mb-1 text-sm font-semibold">
+          Potassium (K ppm in soil)</label
         >
         <input
+          max="210"
           type="number"
           name="K"
           id="K"
-          placeholder="e.g., 10"
+          placeholder="e.g., 70"
           class="w-full px-3 py-2 border rounded-lg shadow-sm"
           required
         />
@@ -104,6 +107,7 @@
       <div>
         <label class="block mb-1 text-sm font-semibold">Temperature (°C)</label>
         <input
+          max="45"
           type="number"
           name="T"
           id="T"
@@ -117,10 +121,11 @@
       <div>
         <label class="block mb-1 text-sm font-semibold">Humidity (%)</label>
         <input
+          max="100"
           type="number"
           name="H"
           id="H"
-          placeholder="e.g., 40"
+          placeholder="e.g., 80"
           class="w-full px-3 py-2 border rounded-lg shadow-sm"
           required
         />
@@ -130,6 +135,7 @@
       <div>
         <label class="block mb-1 text-sm font-semibold">Soil pH</label>
         <input
+          max="14"
           type="number"
           step="0.1"
           name="pH"
@@ -146,10 +152,11 @@
           >Rainfall (mm per of Rainfall of crop's growing period)</label
         >
         <input
+          max="350"
           type="number"
           name="R"
           id="R"
-          placeholder="e.g., 300"
+          placeholder="e.g., 250"
           class="w-full px-3 py-2 border rounded-lg shadow-sm"
           required
         />
@@ -159,7 +166,7 @@
       <button
         id="submit"
         type="button"
-        class="w-full bg-green-600 text-white py-2.5 rounded-lg font-medium shadow hover:bg-blue-700"
+        class="w-full border-2 duration-75 bg-green-600 text-white py-2.5 rounded-lg font-medium shadow hover:bg-white hover:text-green-600 active:bg-green-700 active:text-white"
       >
         Predict Best Crop
       </button>
@@ -168,7 +175,7 @@
         <img src="" style="display: none" id="display_img" />
         <p class="text-1xl  " id="display_info"></p>
 
-        <a class="text-1xl  underline text-green hover:text-blue-500- " id="display_link"></p>
+        <a class="text-1xl  underline text-green hover:text-blue-500 " id="display_link"></p>
       </div>
     </form>
     <script>
@@ -182,7 +189,14 @@
         const H = document.getElementById("H").value;
         const pH = document.getElementById("pH").value;
         const R = document.getElementById("R").value;
-
+        const display_name = document.getElementById("display_name");
+        const display_img = document.getElementById("display_img");
+        const display_info = document.getElementById("display_info");
+        const display_link = document.getElementById("display_link");
+         display_name.innerHTML = ' '
+         display_img.src = ' '
+         display_info.innerHTML= ' '
+         display_link.innerHTML = ' '
         try {
           const response = await fetch(
             `https://cropsense-lbv0.onrender.com/predict?N=${N}&P=${P}&K=${K}&T=${T}&H=${H}&pH=${pH}&R=${R}`
@@ -193,12 +207,8 @@
 
           const data = await response.json();
           console.log(data)
-          const display_name = document.getElementById("display_name");
-          const display_img = document.getElementById("display_img");
-          const display_info = document.getElementById("display_info");
-          const display_link = document.getElementById("display_link"
-
-          );
+          
+          
 
           if (data[" crop_name "]) 
           {
